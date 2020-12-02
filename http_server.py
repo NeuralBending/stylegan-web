@@ -4,7 +4,6 @@ import sys
 import io
 import time
 from dotenv import load_dotenv
-import flask
 import pickle
 import PIL.Image
 import base64
@@ -20,6 +19,10 @@ from training import misc
 from projector import Projector
 import latentCode
 
+os.system("pip install flask-ngrok -q")
+os.system("pip install flask==0.12.2 -q")
+import flask
+from flask_ngrok import run_with_ngrok
 
 
 load_dotenv(dotenv_path = './.env.local')
@@ -122,7 +125,7 @@ def loadProjector():
 
 
 app = flask.Flask(__name__, static_url_path = '', static_folder = './static')
-
+run_with_ngrok(app)
 
 DIST_DIR = './dist'
 
