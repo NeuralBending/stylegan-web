@@ -286,7 +286,7 @@ def main(argv):
 	model_name = argv[1] if len(argv) > 1 else os.environ.get('MODEL_NAME')
 
 	try:
-		app.run(port = int(os.getenv('HTTP_PORT')), host = os.getenv('HTTP_HOST'), threaded = False)
+		app.run()
 	except:
 		print('server interrupted:', sys.exc_info())
 
